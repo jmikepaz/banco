@@ -14,6 +14,6 @@ router.post('/recoveryPassword', coreController.recoveryPassword)
 router.get('/getServicios', coreController.getServicios) 
 router.post('/getHistorialMovimiento', coreController.getHistorialMovimiento) 
 router.post('/getHistorialByTipo', coreController.getHistorialByTipo) 
-router.post('/getTiposServicios', coreController.getTiposServicios) 
+router.get('/getTiposServicios', coreController.getTiposServicios) 
 
 module.exports = router
