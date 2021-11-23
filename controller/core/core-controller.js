@@ -6,6 +6,7 @@ let getHistorialMovimiento = require('./getHistorialMovimiento')
 let getHistorialByTipo = require('./getHistorialByTipo') 
 let getTiposServicios = require('./getTiposServicios') 
 let pagoServicio = require('./pagoServicio') 
+let searchAccount = require('./searchAccount') 
 
 exports.login = login.login; 
 exports.createUser = createUser.createUser; 
@@ -15,3 +16,4 @@ exports.getHistorialMovimiento = getHistorialMovimiento.getHistorialMovimiento;
 exports.getHistorialByTipo = getHistorialByTipo.getHistorialByTipo; 
 exports.getTiposServicios = getTiposServicios.getTiposServicios; 
 exports.pagoServicio = pagoServicio.pagoServicio; 
+exports.searchAccount = searchAccount.searchAccount; 
