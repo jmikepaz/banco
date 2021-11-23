@@ -15,7 +15,8 @@ router.get('/getServicios', coreController.getServicios)
 router.post('/getHistorialMovimiento', coreController.getHistorialMovimiento) 
 router.post('/getHistorialByTipo', coreController.getHistorialByTipo) 
 router.get('/getTiposServicios', coreController.getTiposServicios) 
-router.pos('/pagoServicio', coreController.pagoServicio) 
-router.pos('/searchAccount', coreController.searchAccount) 
+router.post('/pagoServicio', coreController.pagoServicio) 
+router.post('/searchAccount', coreController.searchAccount) 
+router.post('/transferirDinero', coreController.transferirDinero) 
 
 module.exports = router
