@@ -13,5 +13,6 @@ router.post('/createUser', coreController.createUser)
 router.post('/recoveryPassword', coreController.recoveryPassword) 
 router.get('/getServicios', coreController.getServicios) 
 router.post('/getHistorialMovimiento', coreController.getHistorialMovimiento) 
+router.post('/getHistorialByTipo', coreController.getHistorialByTipo) 
 
 module.exports = router
