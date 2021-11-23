@@ -11,6 +11,6 @@ let mdAunt = require('../middleware/middleware-authentication')
 router.post('/login', coreController.login) 
 router.post('/createUser', coreController.createUser) 
 router.post('/recoveryPassword', coreController.recoveryPassword) 
-router.post('/getServicios', coreController.getServicios) 
+router.get('/getServicios', coreController.getServicios) 
 
 module.exports = router
