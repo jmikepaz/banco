@@ -14,7 +14,7 @@ exports.transferirDinero = async function(req, res, next) {
     if (transferir) {  
       let datos = {
         name_origin: 'Cesar Pineda',  
-            monto:100,
+            monto:req.body.monto,
             name_destino: 'Juan Paz'  
       }
 
@@ -26,7 +26,7 @@ exports.transferirDinero = async function(req, res, next) {
         type: "",
       };
       await pdf.create(document, options)
-      sendmail.sendEmailTransferencia('Cesar Pineda', 'cesarpinedacesarpineda@hotmail.com', '100', 'Juan Paz')
+      sendmail.sendEmailTransferencia('Cesar Pineda', 'cesarpinedacesarpineda@hotmail.com', req.body.monto, 'Juan Paz')
       res.send(transferir)
       
     }
