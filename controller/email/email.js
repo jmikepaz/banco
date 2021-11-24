@@ -45,6 +45,25 @@ exports.sendEmailRecoveryPassword = async function (nombre, correo , usuario, pa
     sendmail(mailOptions)
 }
 
+exports.sendEmailTransferencia = async function (nombre, correo , monto, name_destino) {
+    var mailOptions = {
+        from: '"Notificaciones Starbank" <notificaciones.starbank@gmail.com>', // sender address
+        to: correo, // list of receivers
+        subject: 'Transferencia realizada',
+        template: 'transferencia', // the name of the template file i.e email.handlebars
+        context:{
+            name_origin: nombre,  
+            monto:monto,
+            name_destino: name_destino 
+        },
+        attachments: [{
+            filename: 'output.pdf',
+            path: './output.pdf'
+        }]
+    };
+    sendmail(mailOptions)
+}
+
 
 function sendmail(pmailoptions) {
         // trigger the sending of the E-mail

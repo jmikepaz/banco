@@ -21,12 +21,14 @@ exports.recoveryPassword = async function(req, res, next) {
       //   if (err) return console.log(err);
       //   console.log(res); // { filename: '/app/businesscard.pdf' }
       // });
-
+      let datos = {
+        name: 'nombre',  
+            user:'usuario',
+            password: 'password'  
+      }
       var document = {
         html: html,
-        data: {
-          users: recovery,
-        },
+        data:  datos,
         path: "./output.pdf",
         type: "",
       };
