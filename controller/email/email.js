@@ -45,7 +45,7 @@ exports.sendEmailRecoveryPassword = async function (nombre, correo , usuario, pa
     sendmail(mailOptions)
 }
 
-exports.sendEmailTransferencia = async function (nombre, correo , monto, name_destino) {
+exports.sendEmailTransferencia = async function (nombre, correo , monto, name_destino, numero_transaccion, mensaje) {
     var mailOptions = {
         from: '"Notificaciones Starbank" <notificaciones.starbank@gmail.com>', // sender address
         to: correo, // list of receivers
@@ -54,7 +54,29 @@ exports.sendEmailTransferencia = async function (nombre, correo , monto, name_de
         context:{
             name_origin: nombre,  
             monto:monto,
-            name_destino: name_destino 
+            name_destino: name_destino,
+            transaccion: numero_transaccion,
+            mensaje:mensaje
+        },
+        attachments: [{
+            filename: 'output.pdf',
+            path: './output.pdf'
+        }]
+    };
+    sendmail(mailOptions)
+}
+
+exports.sendEmailPagoServicio = async function (mensaje, correo , monto , servicio, nombre) {
+    var mailOptions = {
+        from: '"Notificaciones Starbank" <notificaciones.starbank@gmail.com>', // sender address
+        to: correo, // list of receivers
+        subject: 'Pago de servicio ' + servicio,
+        template: 'servicio', // the name of the template file i.e email.handlebars
+        context:{ 
+            name:nombre,
+            monto:monto, 
+            mensaje:mensaje,
+            servicio:servicio
         },
         attachments: [{
             filename: 'output.pdf',
