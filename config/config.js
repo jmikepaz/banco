@@ -6,8 +6,8 @@ const config = {
       backup: false
     },
     db: {
-      //host: 'localhost',
-      host: '167.99.158.191',
+      host: 'localhost',
+      //host: '167.99.158.191',
       user: 'desarrollo',
       password: 'uthdesarrollo2021*', 
       database: 'starbank' 
