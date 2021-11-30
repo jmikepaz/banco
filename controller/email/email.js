@@ -34,7 +34,7 @@ exports.sendEmailRecoveryPassword = async function (nombre, correo , usuario, pa
     var mailOptions = {
         from: '"Notificaciones Starbank" <notificaciones.starbank@gmail.com>', // sender address
         to: correo, // list of receivers
-        subject: 'Restablecer contraseña' + usuario,
+        subject: 'Restablecer contraseña ' + usuario,
         template: 'recovery', // the name of the template file i.e email.handlebars
         context:{
             name: nombre,  
@@ -45,11 +45,24 @@ exports.sendEmailRecoveryPassword = async function (nombre, correo , usuario, pa
     sendmail(mailOptions)
 }
 
+exports.sendEmailCode= async function ( correo , codigo ) {
+    var mailOptions = {
+        from: '"Notificaciones Starbank" <notificaciones.starbank@gmail.com>', // sender address
+        to: correo, // list of receivers
+        subject: 'Codigo de verificacion ' + codigo,
+        template: 'codigo', // the name of the template file i.e email.handlebars
+        context:{
+            codigo: codigo 
+        }
+    };
+    sendmail(mailOptions)
+}
+
 exports.sendEmailTransferencia = async function (nombre, correo , monto, name_destino, numero_transaccion, mensaje) {
     var mailOptions = {
         from: '"Notificaciones Starbank" <notificaciones.starbank@gmail.com>', // sender address
         to: correo, // list of receivers
-        subject: 'Transferencia realizada',
+        subject: 'Transferencia realizada ' + numero_transaccion,
         template: 'transferencia', // the name of the template file i.e email.handlebars
         context:{
             name_origin: nombre,  

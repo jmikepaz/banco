@@ -19,5 +19,6 @@ router.post('/pagoServicio', coreController.pagoServicio)
 router.post('/searchAccount', coreController.searchAccount) 
 router.post('/transferirDinero', coreController.transferirDinero) 
 router.post('/searchEmail', coreController.searchEmail) 
+router.post('/sendCodeVerification', coreController.sendCodeVerification) 
 
 module.exports = router

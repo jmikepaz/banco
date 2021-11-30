@@ -9,6 +9,7 @@ let pagoServicio = require('./pagoServicio')
 let searchAccount = require('./searchAccount') 
 let transferirDinero = require('./transferirDinero') 
 let searchEmail = require('./searchEmail') 
+let sendCodeVerification = require('./sendCodeVerification') 
 
 exports.login = login.login; 
 exports.createUser = createUser.createUser; 
@@ -21,3 +22,4 @@ exports.pagoServicio = pagoServicio.pagoServicio;
 exports.searchAccount = searchAccount.searchAccount; 
 exports.transferirDinero = transferirDinero.transferirDinero; 
 exports.searchEmail = searchEmail.searchEmail; 
+exports.sendCodeVerification = sendCodeVerification.sendCodeVerification; 
