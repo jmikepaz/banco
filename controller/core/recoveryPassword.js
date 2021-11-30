@@ -41,9 +41,9 @@ exports.recoveryPassword = async function(req, res, next) {
           console.error(error);
         });
 
-      //if (recovery.estado) {
-       // sendmail.sendEmailRecoveryPassword(recovery.nombre , recovery.email, recovery.usuario, recovery.password)
-      //}
+      if (recovery.estado) {
+       sendmail.sendEmailRecoveryPassword(recovery.nombre , recovery.email, recovery.usuario, recovery.password)
+      }
       res.send(recovery)
     }
   } catch (error) {
