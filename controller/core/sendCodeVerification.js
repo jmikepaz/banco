@@ -6,10 +6,9 @@ var pdf = require("pdf-creator-node");
 //var html = fs.readFileSync('./test/businesscard.html', 'utf8');
 var options = { format: 'Letter' };
 var html = fs.readFileSync("views/welcome.handlebars", "utf8"); 
-const crypto = require("crypto");
-
+ 
 exports.sendCodeVerification = async function(req, res, next) {  
-  const number = crypto.randomInt(0, 10000);
+  var number = getRandomInt(1990, 9999) 
   const verificationCode = Math.round( number.toString().padStart(4, "0") );
  
   try { 
@@ -19,5 +18,8 @@ exports.sendCodeVerification = async function(req, res, next) {
   } catch (error) {
      res.send({error:true , mesage:error})
   }
- 
+
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
 }
