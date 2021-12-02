@@ -9,6 +9,8 @@ exports.getHistorialMovimiento = async function(req, res, next) {
   try {
     if (historial) { 
       res.send(historial)
+    }else{
+      res.send([])
     }
   } catch (error) {
      res.send({error:true , mesage:error})
