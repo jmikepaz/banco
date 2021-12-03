@@ -31,20 +31,12 @@ exports.transferirDinero = async function(req, res, next) {
       await pdf.create(document, options)
 
       if (transferir.telefono_origen) {
-        let mensaje = `Un saludo desde Starbank \n
-                       Te notificamos que se ha realizado una transferecia con los siguientes detalles: \n
-                       Monto: *${transferir.monto}* \n
-                       Trasferido a: *${transferir.nombre_destino}* \n
-                       #Transaccion: *${transferir.numero_transaccion}*`
+        let mensaje = `Un saludo desde Starbank \nTe notificamos que se ha realizado una transferecia con los siguientes detalles: \nMonto: *${transferir.monto}* \nTrasferido a: *${transferir.nombre_destino}* \n#Transaccion: *${transferir.numero_transaccion}*`
         whatsapp.sendWhatsappTextMessage(transferir.telefono_origen ,mensaje)
       }
 
       if (transferir.telefono_destino) {
-        let mensaje = `Un saludo desde Starbank \n
-                       Te notificamos que se ha acreditado una transferecia a su cuenta con los siguientes detalles: \n
-                       Monto: *${transferir.monto}* \n
-                       Trasferido a: *${transferir.nombre_origen}* \n
-                       #Transaccion: *${transferir.numero_transaccion}*`
+        let mensaje = `Un saludo desde Starbank \nTe notificamos que se ha acreditado a su cuenta los siguientes detalles: \nMonto: *${transferir.monto}* \nTrasferido de: *${transferir.nombre_origen}* \n#Transaccion: *${transferir.numero_transaccion}*`
         whatsapp.sendWhatsappTextMessage(transferir.telefono_destino ,mensaje)
       }
       
