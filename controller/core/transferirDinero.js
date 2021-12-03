@@ -30,30 +30,30 @@ exports.transferirDinero = async function(req, res, next) {
       };
       await pdf.create(document, options)
 
-      if (servicio.telefono_origen) {
+      if (transferir.telefono_origen) {
         let mensaje = `Un saludo desde Starbank \n
                        Te notificamos que se ha realizado una transferecia con los siguientes detalles: \n
-                       Monto: *${servicio.monto}* \n
-                       Trasferido a: *${servicio.nombre_destino}* \n
-                       #Transaccion: *${servicio.numero_transaccion}*`
-        whatsapp.sendWhatsappTextMessage(servicio.telefono_origen ,mensaje)
+                       Monto: *${transferir.monto}* \n
+                       Trasferido a: *${transferir.nombre_destino}* \n
+                       #Transaccion: *${transferir.numero_transaccion}*`
+        whatsapp.sendWhatsappTextMessage(transferir.telefono_origen ,mensaje)
       }
 
-      if (servicio.telefono_destino) {
+      if (transferir.telefono_destino) {
         let mensaje = `Un saludo desde Starbank \n
                        Te notificamos que se ha acreditado una transferecia a su cuenta con los siguientes detalles: \n
-                       Monto: *${servicio.monto}* \n
-                       Trasferido a: *${servicio.nombre_origen}* \n
-                       #Transaccion: *${servicio.numero_transaccion}*`
-        whatsapp.sendWhatsappTextMessage(servicio.telefono_destino ,mensaje)
+                       Monto: *${transferir.monto}* \n
+                       Trasferido a: *${transferir.nombre_origen}* \n
+                       #Transaccion: *${transferir.numero_transaccion}*`
+        whatsapp.sendWhatsappTextMessage(transferir.telefono_destino ,mensaje)
       }
       
-      if (servicio.telefono_origen) {
+      if (transferir.telefono_origen) {
         let mensaje = `Te notificamos que se ha realizado una transferecia con los siguientes detalles: \n
-                       Monto: *${servicio.monto}* \n
-                       Trasferido a: *${servicio.nombre_destino}* \n
-                       #Transaccion: *${servicio.numero_transaccion}*`
-        whatsapp.sendWhatsappTextMessage(servicio.telefono ,mensaje)
+                       Monto: *${transferir.monto}* \n
+                       Trasferido a: *${transferir.nombre_destino}* \n
+                       #Transaccion: *${transferir.numero_transaccion}*`
+        whatsapp.sendWhatsappTextMessage(transferir.telefono ,mensaje)
       }
 
       sendmail.sendEmailTransferencia(transferir.nombre_origen, 
