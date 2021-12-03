@@ -19,7 +19,7 @@ exports.sendEmailUserCreate = async function (nombre, correo , usuario, password
     var mailOptions = {
         from: '"Notificaciones Starbank" <notificaciones.starbank@gmail.com>', // sender address
         to: correo, // list of receivers
-        subject: 'Bienvenida a la plataforma starbank ' + usuario,
+        subject: 'Bienvenido a la plataforma starbank ' + usuario,
         template: 'welcome', // the name of the template file i.e email.handlebars
         context:{
             name: nombre,  
