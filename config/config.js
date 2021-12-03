@@ -18,6 +18,10 @@ const config = {
           user: 'notificaciones.starbank@gmail.com',
           pass: '3tarB4nk.#'
       }
+  },
+  whatsapp:{
+    token:"ecemoh2jwsm0duij",
+    instance:"376955"
   }
   };
   
