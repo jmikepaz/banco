@@ -21,7 +21,8 @@ exports.pagoServicio = async function(req, res, next) {
             servicio:servicio.descripcion
           }
         if (servicio.telefono) {
-          whatsapp.sendWhatsappTextMessage(servicio.telefono , datos.mensaje + ` Por un monto de: *${servicio.monto}*` )
+          let mensaje = `Un saludo desde Starbank\nGracias por utilizar los servicios de Starbank\nTe notificamos el pago realizado de: *${servicio.descripcion}*\n Por un monto de: ${servicio.monto}`
+          whatsapp.sendWhatsappTextMessage(servicio.telefono , mensaje)
         }
 
         var document = {

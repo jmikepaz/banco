@@ -12,7 +12,7 @@ exports.sendCodeVerification = async function(req, res, next) {
  
   try { 
       if (req.body.telefono) {
-        whatsapp.sendWhatsappTextMessage(req.body.telefono , `Te saludadmos de Starbank, Gracias por utilizar nuestros servicios.  Te compartimos el siguiente codigo de validacion: *${verificationCode}*`)
+        whatsapp.sendWhatsappTextMessage(req.body.telefono , `Te saludadmos de Starbank, Gracias por utilizar nuestros servicios.\nTe compartimos el siguiente codigo de validacion: *${verificationCode}*`)
       }
       await sendmail.sendEmailCode(req.body.email , verificationCode ) 
       res.send({code:verificationCode}) 
