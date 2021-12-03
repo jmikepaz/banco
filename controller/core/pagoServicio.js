@@ -17,7 +17,7 @@ exports.pagoServicio = async function(req, res, next) {
           let datos = {
             name: servicio.nombre,  
             monto:servicio.monto, 
-            mensaje:'Gracias por utilizar los servicios de STAR BANK, Te notificamos el pago realizado de: '+ servicio.descripcion ,
+            mensaje:'Gracias por utilizar los servicios de Starbank, Te notificamos el pago realizado de: '+ servicio.descripcion ,
             servicio:servicio.descripcion
           }
         if (servicio.telefono) {
