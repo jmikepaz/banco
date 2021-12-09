@@ -28,7 +28,7 @@ exports.transferirDinero = async function(req, res, next) {
         path: "./output.pdf",
         type: "",
       };
-      let filename = "servicio_"+servicio.numero_transaccion +".pdf";
+      let filename = "transferencia_"+servicio.numero_transaccion +".pdf";
 
         var documento = {
           html: html,
