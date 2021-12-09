@@ -1,6 +1,7 @@
 var request = require('request'); 
 var config = require('../../config/config') 
 var url_text = `https://api.chat-api.com/instance${config.whatsapp.instance}/message?token=${config.whatsapp.token}`;
+var url_file = `https://api.chat-api.com/instance${config.whatsapp.instance}/sendFile?token=${config.whatsapp.token}`;
     
 
 
@@ -20,16 +21,16 @@ exports.sendWhatsappTextMessage = async function(numero , mensaje) {
    
 }
 
-exports.sendWhatsappMessageFile = async function(numero , mensaje, url_file) {  
+exports.sendWhatsappMessageFile = async function(numero , mensaje, file) {  
 
     var data =  {
-            "body": url_file,
+            "body": file,
             "filename":mensaje,
             "caption": mensaje,
             phone: '504' + numero
     }
     request({
-        url: url_text,
+        url: url_file,
         method: "POST",
         json: data
     });
