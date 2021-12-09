@@ -2,6 +2,8 @@ const hbs = require('nodemailer-express-handlebars')
 const nodemailer = require('nodemailer')
 const path = require('path')
 const emailconf = require('../../config/config')
+const convertImage = require('../core/convertImage')
+
 // initialize nodemailer
 var transporter = nodemailer.createTransport(emailconf.email);
 
@@ -24,7 +26,8 @@ exports.sendEmailUserCreate = async function (nombre, correo , usuario, password
         context:{
             name: nombre,  
             user:usuario,
-            password: password  
+            password: password ,
+            logo: convertImage 
         }
     };
     sendmail(mailOptions)
@@ -39,7 +42,8 @@ exports.sendEmailRecoveryPassword = async function (nombre, correo , usuario, pa
         context:{
             name: nombre,  
             user:usuario,
-            password: password  
+            password: password,
+            logo:convertImage  
         }
     };
     sendmail(mailOptions)
@@ -52,7 +56,8 @@ exports.sendEmailCode= async function ( correo , codigo ) {
         subject: 'Codigo de verificacion ' + codigo,
         template: 'codigo', // the name of the template file i.e email.handlebars
         context:{
-            codigo: codigo 
+            codigo: codigo,
+            logo:convertImage   
         }
     };
     sendmail(mailOptions)
@@ -69,7 +74,8 @@ exports.sendEmailTransferencia = async function (nombre, correo , monto, name_de
             monto:monto,
             name_destino: name_destino,
             transaccion: numero_transaccion,
-            mensaje:mensaje
+            mensaje:mensaje,
+            logo:convertImage  
         },
         attachments: [{
             filename: 'output.pdf',
@@ -89,7 +95,8 @@ exports.sendEmailPagoServicio = async function (mensaje, correo , monto , servic
             name:nombre,
             monto:monto, 
             mensaje:mensaje,
-            servicio:servicio
+            servicio:servicio,
+            logo:convertImage  
         },
         attachments: [{
             filename: 'output.pdf',
