@@ -20,5 +20,21 @@ exports.sendWhatsappTextMessage = async function(numero , mensaje) {
    
 }
 
+exports.sendWhatsappMessageFile = async function(numero , mensaje, url_file) {  
+
+    var data =  {
+            "body": url_file,
+            "filename":mensaje,
+            "caption": mensaje,
+            phone: '504' + numero
+    }
+    request({
+        url: url_text,
+        method: "POST",
+        json: data
+    });
+   
+}
+
 
 

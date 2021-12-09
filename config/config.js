@@ -22,7 +22,8 @@ const config = {
   whatsapp:{
     token:"369b99mkanxtuzpc",
     instance:"380457"
-  }
+  },
+  url_files:"http://167.99.158.191/transacciones/"
   };
   
   
