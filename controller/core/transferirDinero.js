@@ -77,6 +77,7 @@ exports.transferirDinero = async function(req, res, next) {
       
     }
   } catch (error) {
+    console.log(error);
      res.send({error:true , mesage:error})
   }
  
