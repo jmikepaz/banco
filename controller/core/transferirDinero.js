@@ -6,7 +6,7 @@ var options = { format: 'Letter' };
 var html = fs.readFileSync("views/transferencia.handlebars", "utf8"); 
 const whatsapp = require('../core/whatsapp');
 const config = require('../../config/config');
-const convertImage = require('./convertImage');
+const convertImage = require('../core/convertImage');
 exports.transferirDinero = async function(req, res, next) {  
   let transferir = await pg.func('public.ft_proc_ejecutar_transferencia', [JSON.stringify(req.body)]).catch(err => {
     console.log(err)
@@ -21,8 +21,8 @@ exports.transferirDinero = async function(req, res, next) {
           monto:req.body.monto,
           name_destino: transferir.nombre_destino ,
           transaccion:transferir.numero_transaccion,
-          mensaje:'Te notificamos que se ha realizado una transferecia con los siguientes detalles: '
-
+          mensaje:'Te notificamos que se ha realizado una transferecia con los siguientes detalles: ',
+          logo:''
         }
       var document = {
         html: html,
