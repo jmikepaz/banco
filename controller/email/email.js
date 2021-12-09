@@ -27,7 +27,7 @@ exports.sendEmailUserCreate = async function (nombre, correo , usuario, password
             name: nombre,  
             user:usuario,
             password: password ,
-            logo: convertImage 
+            logo: 'https://solucioneseconomicashn.com/starbank.jpeg' 
         }
     };
     sendmail(mailOptions)
@@ -43,7 +43,7 @@ exports.sendEmailRecoveryPassword = async function (nombre, correo , usuario, pa
             name: nombre,  
             user:usuario,
             password: password,
-            logo:convertImage  
+            logo: 'https://solucioneseconomicashn.com/starbank.jpeg'  
         }
     };
     sendmail(mailOptions)
@@ -57,7 +57,7 @@ exports.sendEmailCode= async function ( correo , codigo ) {
         template: 'codigo', // the name of the template file i.e email.handlebars
         context:{
             codigo: codigo,
-            logo:convertImage   
+            logo: 'https://solucioneseconomicashn.com/starbank.jpeg'   
         }
     };
     sendmail(mailOptions)
@@ -75,7 +75,7 @@ exports.sendEmailTransferencia = async function (nombre, correo , monto, name_de
             name_destino: name_destino,
             transaccion: numero_transaccion,
             mensaje:mensaje,
-            logo:convertImage  
+            logo: 'https://solucioneseconomicashn.com/starbank.jpeg'  
         },
         attachments: [{
             filename: 'output.pdf',
@@ -96,7 +96,7 @@ exports.sendEmailPagoServicio = async function (mensaje, correo , monto , servic
             monto:monto, 
             mensaje:mensaje,
             servicio:servicio,
-            logo:convertImage  
+            logo: 'https://solucioneseconomicashn.com/starbank.jpeg'  
         },
         attachments: [{
             filename: 'output.pdf',
