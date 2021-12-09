@@ -5,7 +5,10 @@ var fs = require("fs");
 var options = { format: 'Letter' };
 var html = fs.readFileSync("views/servicio.handlebars", "utf8"); 
 const whatsapp = require('../core/whatsapp')
+const convertImage = require('../core/convertImage')
+
 exports.pagoServicio = async function(req, res, next) {  
+
   let servicio  = await pg.func('public.ft_proc_pago_servicio', [JSON.stringify(req.body)]).catch(err => {
     console.log(err)
   })   
@@ -24,7 +27,7 @@ exports.pagoServicio = async function(req, res, next) {
           let mensaje = `Un saludo desde Starbank\nGracias por utilizar los servicios de Starbank\nTe notificamos el pago realizado de: *${servicio.descripcion}*\n Por un monto de: ${servicio.monto}`
           whatsapp.sendWhatsappTextMessage(servicio.telefono , mensaje)
         }
-
+        datos.logo = convertImage
         var document = {
           html: html,
           data:  datos,
