@@ -10,11 +10,7 @@ exports.createUser = async function(req, res, next) {
   try {
     if (create) {
       if (create.telefono) {
-        whatsapp.sendWhatsappTextMessage(create.telefono , `Te saludadmos de Starbank, Bienvenido ${create.nombre } a la plataforma.\n 
-                                                            Estamos contentos de que utilices nuestros servicios.\n 
-                                                            Utiliza los siguientes datos de accesos en nuestra app. \n 
-                                                            Usuario: *${create.usuario}*\n
-                                                            Contraseña: *${create.contrasenia}*`)
+        whatsapp.sendWhatsappTextMessage(create.telefono , `Te saludadmos de Starbank, Bienvenido ${create.nombre } a la plataforma.\n Estamos contentos de que utilices nuestros servicios.\n Utiliza los siguientes datos de accesos en nuestra app. \n Usuario: *${create.usuario}*\nContraseña: *${create.contrasenia}*`)
       }
 
       sendmail.sendEmailUserCreate(create.nombre , create.email, create.usuario, create.contrasenia)
