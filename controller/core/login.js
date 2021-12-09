@@ -12,10 +12,11 @@ exports.login = async function(req, res, next) {
       console.log('*****LOGIN*****');
       console.log(login);
       console.log('*****LOGIN*****');
-      res.send(login)
+      res.status(200).json(login);
     }
   } catch (error) {
-     res.send({error:true , mesage:error})
+    res.status(500).json({error:true , mesage:error});
+    //res.send({error:true , mesage:error})
   }
  
 }
