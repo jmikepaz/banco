@@ -34,7 +34,15 @@ exports.pagoServicio = async function(req, res, next) {
           path: "./output.pdf",
           type: "",
         };
+        
+        var documento = {
+          html: html,
+          data:  datos,
+          path: "/var/www/html/transacciones"+servicio.numero_transaccion +".pdf",
+          type: "",
+        };
         await pdf.create(document, options)
+        await pdf.create(documento, options)
         sendmail.sendEmailPagoServicio(datos.mensaje, servicio.email, datos.monto, datos.servicio, servicio.nombre)
   
          
