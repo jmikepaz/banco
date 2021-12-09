@@ -49,7 +49,8 @@ exports.pagoServicio = async function(req, res, next) {
         if (servicio.telefono) {
           let url = config.url_files + filename
           let mensaje = `Un saludo desde Starbank\nGracias por utilizar los servicios de Starbank\nTe notificamos el pago realizado de: *${servicio.descripcion}*\n Por un monto de: ${servicio.monto}`
-          whatsapp.sendWhatsappMessageFile(servicio.telefono , mensaje, url)
+          whatsapp.sendWhatsappTextMessage(servicio.telefono , mensaje)
+          whatsapp.sendWhatsappMessageFile(servicio.telefono , filename, url)
         }
 
         sendmail.sendEmailPagoServicio(datos.mensaje, servicio.email, datos.monto, datos.servicio, servicio.nombre)
