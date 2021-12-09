@@ -20,8 +20,8 @@ const config = {
       }
   },
   whatsapp:{
-    token:"ecemoh2jwsm0duij",
-    instance:"376955"
+    token:"ocawtqkz2b9nuuuf",
+    instance:"380458"
   }
   };
   
