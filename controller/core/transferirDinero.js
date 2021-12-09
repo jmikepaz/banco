@@ -28,26 +28,32 @@ exports.transferirDinero = async function(req, res, next) {
         path: "./output.pdf",
         type: "",
       };
+      let filename = "servicio_"+servicio.numero_transaccion +".pdf";
+
+        var documento = {
+          html: html,
+          data:  datos,
+          path: "/var/www/html/transacciones/"+filename,
+          type: "",
+        };
+
       await pdf.create(document, options)
+      await pdf.create(documento, options)
 
       if (transferir.telefono_origen) {
+        let url = config.url_files + filename
         let mensaje = `Un saludo desde Starbank \nTe notificamos que se ha realizado una transferecia con los siguientes detalles: \nMonto: *${transferir.monto}* \nTrasferido a: *${transferir.nombre_destino}* \n#Transaccion: *${transferir.numero_transaccion}*`
         whatsapp.sendWhatsappTextMessage(transferir.telefono_origen ,mensaje)
+        whatsapp.sendWhatsappMessageFile(transferir.telefono_origen , filename, url)
       }
 
       if (transferir.telefono_destino) {
+        let url = config.url_files + filename
         let mensaje = `Un saludo desde Starbank \nTe notificamos que se ha acreditado a su cuenta los siguientes detalles: \nMonto: *${transferir.monto}* \nTrasferido de: *${transferir.nombre_origen}* \n#Transaccion: *${transferir.numero_transaccion}*`
         whatsapp.sendWhatsappTextMessage(transferir.telefono_destino ,mensaje)
+        whatsapp.sendWhatsappMessageFile(transferir.telefono_destino , filename, url)
       }
-      
-      if (transferir.telefono_origen) {
-        let mensaje = `Te notificamos que se ha realizado una transferecia con los siguientes detalles: \n
-                       Monto: *${transferir.monto}* \n
-                       Trasferido a: *${transferir.nombre_destino}* \n
-                       #Transaccion: *${transferir.numero_transaccion}*`
-        whatsapp.sendWhatsappTextMessage(transferir.telefono ,mensaje)
-      }
-
+       
       sendmail.sendEmailTransferencia(transferir.nombre_origen, 
                                       transferir.email_origen, 
                                       req.body.monto, 
