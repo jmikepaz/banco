@@ -4,7 +4,8 @@ var pdf = require("pdf-creator-node");
 var fs = require("fs"); 
 var options = { format: 'Letter' };
 var html = fs.readFileSync("views/transferencia.handlebars", "utf8"); 
-const whatsapp = require('../core/whatsapp')
+const whatsapp = require('../core/whatsapp');
+const config = require('../../config/config');
 exports.transferirDinero = async function(req, res, next) {  
   let transferir = await pg.func('public.ft_proc_ejecutar_transferencia', [JSON.stringify(req.body)]).catch(err => {
     console.log(err)
