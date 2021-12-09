@@ -42,7 +42,9 @@ exports.pagoServicio = async function(req, res, next) {
           type: "",
         };
         await pdf.create(document, options)
+        console.log('**************');
         await pdf.create(documento, options)
+        console.log('**************');
         sendmail.sendEmailPagoServicio(datos.mensaje, servicio.email, datos.monto, datos.servicio, servicio.nombre)
   
          
